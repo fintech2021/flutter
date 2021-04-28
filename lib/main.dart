@@ -1,4 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
+import 'package:front_2/DepositList.dart';
+import 'package:front_2/EnrollAccount.dart';
+import 'package:front_2/StockList.dart';
+import 'package:front_2/StockHistory.dart';
+//import 'package:front/__enrollAccount.dart';
+//import 'package:horizontal_data_table/horizontal_data_table.dart';
 
 Color light_gray = const Color(0xffe0e0e0);
 void main() {
@@ -15,6 +25,9 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: MyHomePage(),
+//      home: Scaffold(
+//        body: EnrollAccountWedget(),
+//      )
     );
   }
 }
@@ -31,9 +44,9 @@ class MyHomePage extends StatefulWidget {
 
 class MyHomePageState extends State<MyHomePage> {
   int selectedIndex = 0;
-  Widget _home = MyContacts();
-  Widget _myEmails = MyEmails();
-  Widget _myProfile = MyProfile();
+  Widget _home = Home();
+  Widget _stock = Stock();
+  Widget _deposit = Deposit();
 
   @override
   Widget build(BuildContext context) {
@@ -70,9 +83,9 @@ class MyHomePageState extends State<MyHomePage> {
     if(this.selectedIndex == 0) {
       return this._home;
     } else if(this.selectedIndex==1) {
-      return this._myEmails;
+      return this._stock;
     } else {
-      return this._myProfile;
+      return this._deposit;
     }
   }
 
@@ -83,23 +96,23 @@ class MyHomePageState extends State<MyHomePage> {
   }
 }
 
-class MyContacts extends StatelessWidget {
+class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-        child:
-        Column(
-          children: <Widget>[
-            userName('최수영 님'),
-            totalAsset('34', width: 100, height: 50),
+      child:
+      Column(
+        children: <Widget>[
+          userName('최수영 님'),
+          totalAsset('34', width: 100, height: 50),
 //          makeText('계좌 계설하기', width: 100, height: 50),
-            plusButton(),
+          plusButton(context),
 //          bottombar(),
 
-          ],
+        ],
 
 //        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        ),
+      ),
 
 
 
@@ -117,21 +130,33 @@ class MyContacts extends StatelessWidget {
     );
   }
 
-  Widget plusButton(){
-    return Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(50.0),
-          color: light_gray,
-        ),
+  Widget plusButton(BuildContext ctx){
+//    BuildContext ctx;
+
+//    return RaisedButton(
+
+        return Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50.0),
+              color: light_gray,
+            ),
         margin: EdgeInsets.all(20.0),
 //      color: light_gray,
         width: 350,
         padding: EdgeInsets.all(15.0),
+        child: RaisedButton(
+          color: light_gray,
+          onPressed: () {
+            Navigator.push(
+              ctx, MaterialPageRoute(builder: (ctx) => EnrollAccountWedget()),
+            );
+          },
+//          child:Container(
         child: Row(
 
           mainAxisAlignment: MainAxisAlignment.center, // 주 축 기준 중앙
 //      crossAxisAlignment: CrossAxisAlignment.center, // 교차 축 기준 중앙
-          children: <Widget>[
+            children: <Widget>[
 
 //              Icon(Icons.sentiment_very_satisfied),
             Icon(Icons.add),
@@ -142,6 +167,7 @@ class MyContacts extends StatelessWidget {
               ),
             ),
           ],
+        )
         )
     );
   }
@@ -218,81 +244,120 @@ class MyContacts extends StatelessWidget {
     );
   }
 }
-  Widget totalDeposit(String money){
-    return Container(
-        margin: EdgeInsets.only(bottom: 20.0),
-        decoration: BoxDecoration(
+Widget totalDeposit(String money){
+  return Container(
+      margin: EdgeInsets.only(bottom: 20.0),
+      decoration: BoxDecoration(
 //        borderRadius: BorderRadius.circular(50.0),
 //          border: Border.all(color: Colors.red, width: 3),
 //        color: light_gray,
-        ),
+      ),
 
-        width: 220,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: <Widget>[
-            Text(money,
-              textAlign: TextAlign.right,
-              style: TextStyle(
-                fontSize: 23.0,
-              ),
+      width: 220,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: <Widget>[
+          Text(money,
+            textAlign: TextAlign.right,
+            style: TextStyle(
+              fontSize: 23.0,
             ),
-            Text(" 원",
-              textAlign: TextAlign.right,
-              style: TextStyle(
-                fontSize: 23.0,
-              ),
+          ),
+          Text(" 원",
+            textAlign: TextAlign.right,
+            style: TextStyle(
+              fontSize: 23.0,
             ),
-          ],
-        )
-    );
-  }
-  Widget totalStock(String money){
-    return Container(
-        margin: EdgeInsets.only(bottom: 20.0),
-        decoration: BoxDecoration(
+          ),
+        ],
+      )
+  );
+}
+Widget totalStock(String money){
+  return Container(
+      margin: EdgeInsets.only(bottom: 20.0),
+      decoration: BoxDecoration(
 //        borderRadius: BorderRadius.circular(50.0),
 //        border: Border.all(color: Colors.red, width: 3),
 //        color: light_gray,
-        ),
-        width: 220,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: <Widget>[
-            Text(money,
-              textAlign: TextAlign.right,
-              style: TextStyle(
-                fontSize: 23.0,
-                color: Colors.red,
-              ),
+      ),
+      width: 220,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: <Widget>[
+          Text(money,
+            textAlign: TextAlign.right,
+            style: TextStyle(
+              fontSize: 23.0,
+              color: Colors.red,
             ),
-            Text(" 원",
-              textAlign: TextAlign.right,
-              style: TextStyle(
-                fontSize: 23.0,
-                color: Colors.red,
-              ),
+          ),
+          Text(" 원",
+            textAlign: TextAlign.right,
+            style: TextStyle(
+              fontSize: 23.0,
+              color: Colors.red,
             ),
-          ],
-        )
-    );
+          ),
+        ],
+      )
+  );
 
-  }
-
-
-
-
-
-class MyEmails extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(child: Text("Emails"));
-  }
 }
 
-class MyProfile extends StatelessWidget {
+
+class Stock extends StatelessWidget {
+
+  Widget build(BuildContext context) {
+    return Container(
+//      margin: EdgeInsets.only(top:80.0),
+        child: Scaffold(
+        body: DefaultTabController(
+        length: 2,
+
+        child: Column(
+        children: <Widget>[
+
+
+        Container(
+          margin: EdgeInsets.only(top:50.0),
+        constraints: BoxConstraints(maxHeight: 150.0),
+    child: Material(
+    color: Colors.indigo,
+    child: TabBar(
+      labelPadding: EdgeInsets.only(top: 10.0),
+    tabs: [
+    Tab(text:'Stock List'),
+    Tab(text:'History'),
+//    Tab(icon: Icon(Icons.directions_bike)),
+    ],
+    ),
+    ),
+    ),
+    Expanded(
+    child: TabBarView(
+      children: <Widget>[
+//        Widget()
+        StockListWedget(),
+//        Icon(Icons.directions_car),
+//        Text('data'),
+        HistoryWedget(),
+      ],
+    ),
+    ),
+    ],
+    ),
+    )
+        )
+    );
+  }
+    }
+
+
+
+class Deposit extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text("Profile"));
+    return Center(child: DepositWidget());
   }
 }
