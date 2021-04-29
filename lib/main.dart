@@ -5,12 +5,19 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:front_2/DepositList.dart';
 import 'package:front_2/EnrollAccount.dart';
-import 'package:front_2/StockList.dart';
+//import 'package:front_2/__StockList.dart';
 import 'package:front_2/StockHistory.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
+import 'Stock.dart';
+import 'StockList.dart';
 //import 'package:front/__enrollAccount.dart';
 //import 'package:horizontal_data_table/horizontal_data_table.dart';
 
 Color light_gray = const Color(0xffe0e0e0);
+
+
 void main() {
   runApp(MyApp());
 }
@@ -45,38 +52,39 @@ class MyHomePage extends StatefulWidget {
 class MyHomePageState extends State<MyHomePage> {
   int selectedIndex = 0;
   Widget _home = Home();
-  Widget _stock = Stock();
+//  Widget _stock = Stock() as StatefulBuilder;
+  Widget _stock = Stock() ;
   Widget _deposit = Deposit();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-//      appBar: AppBar(
-//        title: Text("BottomNavigationBar Example"),
-//      ),
-      body:  this.getBody(),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        currentIndex: this.selectedIndex,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text("Home"),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.bar_chart),
-            title: Text("Stock"),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.attach_money),
-            title: Text("Deposit"),
-          )
-        ],
-        onTap: (int index) {
-          this.onTapHandler(index);
-        },
-      ),
-    );
+    return
+//      Stock(
+
+      Scaffold(
+        body:  this.getBody(),
+        bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          currentIndex: this.selectedIndex,
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              title: Text("Home"),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.bar_chart),
+              title: Text("Stock"),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.attach_money),
+              title: Text("Deposit"),
+            )
+          ],
+          onTap: (int index) {
+            this.onTapHandler(index);
+          },
+        ),
+      );
   }
 
   Widget getBody( )  {
@@ -135,39 +143,39 @@ class Home extends StatelessWidget {
 
 //    return RaisedButton(
 
-        return Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(50.0),
-              color: light_gray,
-            ),
+    return Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(50.0),
+          color: light_gray,
+        ),
         margin: EdgeInsets.all(20.0),
 //      color: light_gray,
         width: 350,
         padding: EdgeInsets.all(15.0),
         child: RaisedButton(
-          color: light_gray,
-          onPressed: () {
-            Navigator.push(
-              ctx, MaterialPageRoute(builder: (ctx) => EnrollAccountWedget()),
-            );
-          },
+            color: light_gray,
+            onPressed: () {
+              Navigator.push(
+                ctx, MaterialPageRoute(builder: (ctx) => EnrollAccountWedget()),
+              );
+            },
 //          child:Container(
-        child: Row(
+            child: Row(
 
-          mainAxisAlignment: MainAxisAlignment.center, // 주 축 기준 중앙
+              mainAxisAlignment: MainAxisAlignment.center, // 주 축 기준 중앙
 //      crossAxisAlignment: CrossAxisAlignment.center, // 교차 축 기준 중앙
-            children: <Widget>[
+              children: <Widget>[
 
 //              Icon(Icons.sentiment_very_satisfied),
-            Icon(Icons.add),
-            Text('  계좌 추가하기 ',
-              textAlign: TextAlign.left,
-              style: TextStyle(
-                fontSize: 23.0,
-              ),
-            ),
-          ],
-        )
+                Icon(Icons.add),
+                Text('  계좌 추가하기 ',
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    fontSize: 23.0,
+                  ),
+                ),
+              ],
+            )
         )
     );
   }
@@ -305,54 +313,60 @@ Widget totalStock(String money){
 
 }
 
-
-class Stock extends StatelessWidget {
-
-  Widget build(BuildContext context) {
-    return Container(
-//      margin: EdgeInsets.only(top:80.0),
-        child: Scaffold(
-        body: DefaultTabController(
-        length: 2,
-
-        child: Column(
-        children: <Widget>[
-
-
-        Container(
-          margin: EdgeInsets.only(top:50.0),
-        constraints: BoxConstraints(maxHeight: 150.0),
-    child: Material(
-    color: Colors.indigo,
-    child: TabBar(
-      labelPadding: EdgeInsets.only(top: 10.0),
-    tabs: [
-    Tab(text:'Stock List'),
-    Tab(text:'History'),
-//    Tab(icon: Icon(Icons.directions_bike)),
-    ],
-    ),
-    ),
-    ),
-    Expanded(
-    child: TabBarView(
-      children: <Widget>[
-//        Widget()
-        StockListWedget(),
-//        Icon(Icons.directions_car),
-//        Text('data'),
-        HistoryWedget(),
-      ],
-    ),
-    ),
-    ],
-    ),
-    )
-        )
-    );
-  }
-    }
-
+//
+//class Stock extends StatefulWidget {
+//  Stock({Key key}) : super(key: key);
+//
+//  @override
+//  State<StatefulWidget> createState() {
+//    return MyHomePageState();
+//  }
+//
+//  Widget build(BuildContext context) {
+//    return Container(
+////      margin: EdgeInsets.only(top:80.0),
+//        child: Scaffold(
+//            body: DefaultTabController(
+//              length: 2,
+//
+//              child: Column(
+//                children: <Widget>[
+//
+//
+//                  Container(
+//                    margin: EdgeInsets.only(top:50.0),
+//                    constraints: BoxConstraints(maxHeight: 150.0),
+//                    child: Material(
+//                      color: Colors.indigo,
+//                      child: TabBar(
+//                        labelPadding: EdgeInsets.only(top: 10.0),
+//                        tabs: [
+//                          Tab(text:'Stock List'),
+//                          Tab(text:'History'),
+////    Tab(icon: Icon(Icons.directions_bike)),
+//                        ],
+//                      ),
+//                    ),
+//                  ),
+//                  Expanded(
+//                    child: TabBarView(
+//                      children: <Widget>[
+////        Widget()
+//                        StockListWedget(),
+////        Icon(Icons.directions_car),
+////        Text('data'),
+//                        HistoryWedget(),
+//                      ],
+//                    ),
+//                  ),
+//                ],
+//              ),
+//            )
+//        )
+//    );
+//  }
+//}
+//
 
 
 class Deposit extends StatelessWidget {
