@@ -3,10 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'package:front_2/DepositList.dart';
+import 'package:front_2/Deposit.dart';
 import 'package:front_2/EnrollAccount.dart';
-//import 'package:front_2/__StockList.dart';
-import 'package:front_2/StockHistory.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -54,7 +52,8 @@ class MyHomePageState extends State<MyHomePage> {
   Widget _home = Home();
 //  Widget _stock = Stock() as StatefulBuilder;
   Widget _stock = Stock() ;
-  Widget _deposit = Deposit();
+//  Widget _deposit = DepositList();
+  Widget _deposit = Balance();
 
   @override
   Widget build(BuildContext context) {
@@ -145,17 +144,18 @@ class Home extends StatelessWidget {
 
     return Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(50.0),
-          color: light_gray,
+//          borderRadius: BorderRadius.circular(50.0),
+//          color: light_gray,
         ),
-        margin: EdgeInsets.all(20.0),
+        margin: EdgeInsets.only(left:20.0, right: 20.0),
 //      color: light_gray,
         width: 350,
-        padding: EdgeInsets.all(15.0),
+//        padding: EdgeInsets.all(15.0),
         child: RaisedButton(
-            color: light_gray,
+//            color: light_gray,
             onPressed: () {
               Navigator.push(
+
                 ctx, MaterialPageRoute(builder: (ctx) => EnrollAccountWedget()),
               );
             },
@@ -183,17 +183,25 @@ class Home extends StatelessWidget {
     return Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(30.0),
-          color: light_gray,
+//          color: light_gray,
         ),
         margin: EdgeInsets.all(5.0),
         width: 350,
-        height: 300,
+//        height: 300,
         padding: EdgeInsets.all(15.0),
         child: Column(
           children: <Widget>[
-            rowDeposit(),
-            rowStock(),
 
+
+            rowDeposit(),
+
+            rowStock(),
+            const Divider(
+              height: 40,
+              thickness: 1,
+              indent: 0,
+              endIndent: 30,
+            ),
           ],
 
         )
@@ -235,7 +243,7 @@ class Home extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10), //모서리를 둥글게
 //            border: Border.all(color: Colors.red, width: 3)//테두리
-          color: Colors.white,
+//          color: Colors.white,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center, // 주 축 기준 중앙
@@ -369,9 +377,9 @@ Widget totalStock(String money){
 //
 
 
-class Deposit extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(child: DepositWidget());
-  }
-}
+//class Deposit extends StatelessWidget {
+//  @override
+//  Widget build(BuildContext context) {
+//    return Center(child: DepositWidget());
+//  }
+//}

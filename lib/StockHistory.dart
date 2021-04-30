@@ -81,372 +81,372 @@ class HistoryListPageState extends State<HistoryList> {
   Widget build(BuildContext context) {
     return Container(
 //      margin: EdgeInsets.only(top:80.0),
-        child: Scaffold(
+      child: Scaffold(
         body:
 //          DefaultTabController(
 //              child:
         Center(
 //            child:DefaultTabController(
-        child: FutureBuilder<List<History>>(
-        future: historyList,
-        builder: (context, snapshot)
-    {
-      if (snapshot.hasData) {
-        return ListView.builder(
+          child: FutureBuilder<List<History>>(
+            future: historyList,
+            builder: (context, snapshot)
+            {
+              if (snapshot.hasData) {
+                return ListView.builder(
 
-            itemCount: snapshot.data.length,
-            itemBuilder: (context, index){
-          History history = snapshot.data[index];
+                  itemCount: snapshot.data.length,
+                  itemBuilder: (context, index){
+                    History history = snapshot.data[index];
 //          String _m = (history.depositAmount == '') ? '- '+history.withdrawAmount : '+ '+history.depositAmount;
 //              String _m =  (history.depositAmount == '') ? history.withdrawAmount : history.depositAmount;
-              Color _color = (history.depositAmount == '') ? Colors.deepOrangeAccent : Colors.blueAccent;
+                    Color _color = (history.depositAmount == '') ? Colors.deepOrangeAccent : Colors.blueAccent;
 
 //
 
-          return Container(
+                    return Container(
 
 
-              child:  Container(
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
+                        child:  Container(
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
 //            borderRadius: BorderRadius.circular(30.0),
 //            border: Border.all(color: Colors.red, width: 3)
 //            border:
 //            color: light_pink,
 //          color:Colors.white,
-                  ),
-                  margin: EdgeInsets.all(5.0),
+                            ),
+//                  margin: EdgeInsets.all(5.0),
 //          width: 400,
 //        height: 300,
-                  padding: EdgeInsets.only(left: 40.0, top: 10.0),
-                  child: Column(
-                      children: <Widget>[
-                        //날짜
-                        Row(
-                          children: <Widget>[
+                            padding: EdgeInsets.only(left: 40.0, top: 10.0),
+                            child: Column(
+                                children: <Widget>[
+                                  //날짜
+                                  Row(
+                                    children: <Widget>[
 //                  Flexible(
 //                    flex:1,
 //                    child:
-                            Container(
+                                      Container(
 //                  color: light_gray,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10.0),
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(10.0),
 //                            border: Border.all(color: Colors.red, width: 3)
-                                  color: light_gray,
-                                ),
+                                            color: light_gray,
+                                          ),
 //                    width: 300,
-                                margin: EdgeInsets.only( bottom:10.0),
-                                padding: EdgeInsets.all(7.0),
-                                child: Text(
-                                  history.input_date,
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                    fontSize: 18.0,
-                                    color: Colors.black,
-                                  ),
-                                )
+                                          margin: EdgeInsets.only( bottom:10.0),
+                                          padding: EdgeInsets.all(7.0),
+                                          child: Text(
+                                            history.input_date,
+                                            textAlign: TextAlign.left,
+                                            style: TextStyle(
+                                              fontSize: 18.0,
+                                              color: Colors.black,
+                                            ),
+                                          )
 //                  ),
-                            ),
+                                      ),
 //
-                          ],
-                        ),
+                                    ],
+                                  ),
 
-                        //계좌번호
-                        Row(
-                          children: <Widget>[
+                                  //계좌번호
+                                  Row(
+                                    children: <Widget>[
 //                  Flexible(
 //                    flex:1,
 //                    child:
-                            Container(
-                                decoration: BoxDecoration(
+                                      Container(
+                                          decoration: BoxDecoration(
 //            borderRadius: BorderRadius.circular(30.0),
 //                            border: Border.all(color: Colors.red, width: 3)
-                                ),
-                                width: 130,
-                                margin: EdgeInsets.only(right: 10.0),
-                                child: Text(
-                                  '증권',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                    fontSize: 10.0,
-                                    color: Colors.black38,
-                                  ),
-                                )
+                                          ),
+                                          width: 130,
+                                          margin: EdgeInsets.only(right: 10.0),
+                                          child: Text(
+                                            '증권',
+                                            textAlign: TextAlign.left,
+                                            style: TextStyle(
+                                              fontSize: 10.0,
+                                              color: Colors.black38,
+                                            ),
+                                          )
 //                  ),
-                            ),
+                                      ),
 //                  Flexible(
 //                      flex:1,
 //                      child:
-                            Container(
-                                decoration: BoxDecoration(
+                                      Container(
+                                          decoration: BoxDecoration(
 //            borderRadius: BorderRadius.circular(30.0),
 //                            border: Border.all(color: Colors.red, width: 3)
-                                ),
-                                width: 200,
-                                margin: EdgeInsets.only(right: 10.0),
-                                child: Text(
-                                  '계좌번호',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                    fontSize: 10.0,
-                                    color: Colors.black38,
-                                  ),
-                                )),
+                                          ),
+                                          width: 200,
+                                          margin: EdgeInsets.only(right: 10.0),
+                                          child: Text(
+                                            '계좌번호',
+                                            textAlign: TextAlign.left,
+                                            style: TextStyle(
+                                              fontSize: 10.0,
+                                              color: Colors.black38,
+                                            ),
+                                          )),
 //                  ),
 //                  Flexible(
 //                      flex:1,
 //                      child:
 
-                          ],
-                        ),
-                        Row(
-                          children: <Widget>[
+                                    ],
+                                  ),
+                                  Row(
+                                    children: <Widget>[
 //                  Flexible(
 //                    flex:1,
 //                    child:
-                            Container(
-                                decoration: BoxDecoration(
+                                      Container(
+                                          decoration: BoxDecoration(
 //            borderRadius: BorderRadius.circular(30.0),
 //                            border: Border.all(color: Colors.red, width: 3)
-                                ),
-                                width: 130,
-                                margin: EdgeInsets.only(right: 10.0, bottom: 10.0),
-                                child: Text(
-                                  history.company,
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                    fontSize: 20.0,
+                                          ),
+                                          width: 130,
+                                          margin: EdgeInsets.only(right: 10.0, bottom: 10.0),
+                                          child: Text(
+                                            history.company,
+                                            textAlign: TextAlign.left,
+                                            style: TextStyle(
+                                              fontSize: 20.0,
 
-                                  ),
-                                )
+                                            ),
+                                          )
 //                  ),
-                            ),
+                                      ),
 //                  Flexible(
 //                      flex:1,
 //                      child:
-                            Container(
-                                decoration: BoxDecoration(
+                                      Container(
+                                          decoration: BoxDecoration(
 //            borderRadius: BorderRadius.circular(30.0),
 //                            border: Border.all(color: Colors.red, width: 3)
-                                ),
-                                width: 200,
-                                margin: EdgeInsets.only(right: 10.0, bottom: 10.0),
-                                child: Text(
-                                  history.account,
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                    fontSize: 20.0,
-                                  ),
-                                )),
+                                          ),
+                                          width: 200,
+                                          margin: EdgeInsets.only(right: 10.0, bottom: 10.0),
+                                          child: Text(
+                                            history.account,
+                                            textAlign: TextAlign.left,
+                                            style: TextStyle(
+                                              fontSize: 20.0,
+                                            ),
+                                          )),
 //                  ),
 //                  Flexible(
 //                      flex:1,
 //                      child:
 
-                          ],
-                        ),
+                                    ],
+                                  ),
 
-                        // 구분, 종목
-                        Row(
-                          children: <Widget>[
+                                  // 구분, 종목
+                                  Row(
+                                    children: <Widget>[
 //                  Flexible(
 //                    flex:1,
 //                    child:
-                            Container(
-                                decoration: BoxDecoration(
+                                      Container(
+                                          decoration: BoxDecoration(
 //            borderRadius: BorderRadius.circular(30.0),
 //                            border: Border.all(color: Colors.red, width: 3)
-                                ),
-                                width: 130,
-                                margin: EdgeInsets.only(right: 10.0),
-                                child: Text(
-                                  '구분',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                    fontSize: 10.0,
-                                    color: Colors.black38,
-                                  ),
-                                )
+                                          ),
+                                          width: 130,
+                                          margin: EdgeInsets.only(right: 10.0),
+                                          child: Text(
+                                            '구분',
+                                            textAlign: TextAlign.left,
+                                            style: TextStyle(
+                                              fontSize: 10.0,
+                                              color: Colors.black38,
+                                            ),
+                                          )
 //                  ),
-                            ),
+                                      ),
 //                  Flexible(
 //                      flex:1,
 //                      child:
-                            Container(
-                                decoration: BoxDecoration(
+                                      Container(
+                                          decoration: BoxDecoration(
 //            borderRadius: BorderRadius.circular(30.0),
 //                            border: Border.all(color: Colors.red, width: 3)
-                                ),
-                                width: 200,
-                                margin: EdgeInsets.only(right: 10.0),
-                                child: Text(
-                                  '종목',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                    fontSize: 10.0,
-                                    color: Colors.black38,
-                                  ),
-                                )),
+                                          ),
+                                          width: 200,
+                                          margin: EdgeInsets.only(right: 10.0),
+                                          child: Text(
+                                            '종목',
+                                            textAlign: TextAlign.left,
+                                            style: TextStyle(
+                                              fontSize: 10.0,
+                                              color: Colors.black38,
+                                            ),
+                                          )),
 //                  ),
 //                  Flexible(
 //                      flex:1,
 //                      child:
 
-                          ],
-                        ),
-                        Row(
-                          children: <Widget>[
+                                    ],
+                                  ),
+                                  Row(
+                                    children: <Widget>[
 //                  Flexible(
 //                    flex:1,
 //                    child:
-                            Container(
-                                decoration: BoxDecoration(
+                                      Container(
+                                          decoration: BoxDecoration(
 //            borderRadius: BorderRadius.circular(30.0),
 //                            border: Border.all(color: Colors.red, width: 3)
-                                ),
-                                width: 130,
-                                margin: EdgeInsets.only(right: 10.0, bottom: 10.0),
-                                child: Text(
-                                  history.category,
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                    fontSize: 20.0,
+                                          ),
+                                          width: 130,
+                                          margin: EdgeInsets.only(right: 10.0, bottom: 10.0),
+                                          child: Text(
+                                            history.category,
+                                            textAlign: TextAlign.left,
+                                            style: TextStyle(
+                                              fontSize: 20.0,
 
-                                  ),
-                                )
+                                            ),
+                                          )
 //                  ),
-                            ),
+                                      ),
 //                  Flexible(
 //                      flex:1,
 //                      child:
-                            Container(
-                                decoration: BoxDecoration(
+                                      Container(
+                                          decoration: BoxDecoration(
 //            borderRadius: BorderRadius.circular(30.0),
 //                            border: Border.all(color: Colors.red, width: 3)
-                                ),
-                                width: 200,
-                                margin: EdgeInsets.only(right: 10.0, bottom: 10.0),
-                                child: Text(
-                                  history.name+' ('+ history.eqcode + ')',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                    fontSize: 20.0,
-                                  ),
-                                )),
+                                          ),
+                                          width: 200,
+                                          margin: EdgeInsets.only(right: 10.0, bottom: 10.0),
+                                          child: Text(
+                                            history.name+' ('+ history.eqcode + ')',
+                                            textAlign: TextAlign.left,
+                                            style: TextStyle(
+                                              fontSize: 20.0,
+                                            ),
+                                          )),
 //                  ),
 //                  Flexible(
 //                      flex:1,
 //                      child:
 
-                          ],
-                        ),
-                        // 수량 , 거래금
-                        Row(
-                          children: <Widget>[
+                                    ],
+                                  ),
+                                  // 수량 , 거래금
+                                  Row(
+                                    children: <Widget>[
 //                  Flexible(
 //                    flex:1,
 //                    child:
-                            Container(
-                                decoration: BoxDecoration(
+                                      Container(
+                                          decoration: BoxDecoration(
 //            borderRadius: BorderRadius.circular(30.0),
 //                            border: Border.all(color: Colors.red, width: 3)
-                                ),
-                                width: 130,
-                                margin: EdgeInsets.only(right: 10.0),
-                                child: Text(
-                                  '수량',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                    fontSize: 10.0,
-                                    color: Colors.black38,
-                                  ),
-                                )
+                                          ),
+                                          width: 130,
+                                          margin: EdgeInsets.only(right: 10.0),
+                                          child: Text(
+                                            '수량',
+                                            textAlign: TextAlign.left,
+                                            style: TextStyle(
+                                              fontSize: 10.0,
+                                              color: Colors.black38,
+                                            ),
+                                          )
 //                  ),
-                            ),
+                                      ),
 //                  Flexible(
 //                      flex:1,
 //                      child:
-                            Container(
-                                decoration: BoxDecoration(
+                                      Container(
+                                          decoration: BoxDecoration(
 //            borderRadius: BorderRadius.circular(30.0),
 //                            border: Border.all(color: Colors.red, width: 3)
-                                ),
-                                width:  200,
-                                margin: EdgeInsets.only(right: 10.0),
-                                child: Text(
-                                  '금액',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                    fontSize: 10.0,
-                                    color: Colors.black38,
-                                  ),
-                                )),
+                                          ),
+                                          width:  200,
+                                          margin: EdgeInsets.only(right: 10.0),
+                                          child: Text(
+                                            '금액',
+                                            textAlign: TextAlign.left,
+                                            style: TextStyle(
+                                              fontSize: 10.0,
+                                              color: Colors.black38,
+                                            ),
+                                          )),
 //                  ),
 //                  Flexible(
 //                      flex:1,
 //                      child:
 //                  )
-                          ],
-                        ),
-                        Row(
-                          children: <Widget>[
+                                    ],
+                                  ),
+                                  Row(
+                                    children: <Widget>[
 //                  Flexible(
 //                    flex:1,
 //                    child:
-                            Container(
-                                decoration: BoxDecoration(
+                                      Container(
+                                          decoration: BoxDecoration(
 //            borderRadius: BorderRadius.circular(30.0),
 //                            border: Border.all(color: Colors.red, width: 3)
-                                ),
-                                width: 130,
-                                margin: EdgeInsets.only(right: 10.0, bottom: 10.0),
-                                child: Text(
-                                  history.count ,
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                    fontSize: 20.0,
-                                  ),
-                                )
+                                          ),
+                                          width: 130,
+                                          margin: EdgeInsets.only(right: 10.0, bottom: 10.0),
+                                          child: Text(
+                                            history.count ,
+                                            textAlign: TextAlign.left,
+                                            style: TextStyle(
+                                              fontSize: 20.0,
+                                            ),
+                                          )
 //                  ),
-                            ),
+                                      ),
 //                  Flexible(
 //                      flex:1,
 //                      child:
-                            Container(
-                                decoration: BoxDecoration(
+                                      Container(
+                                          decoration: BoxDecoration(
 //            borderRadius: BorderRadius.circular(30.0),
 //                            border: Border.all(color: Colors.red, width: 3)
-                                ),
-                                width: 150,
-                                margin: EdgeInsets.only(right: 10.0, bottom: 10.0),
-                                child: Text(
-                                  history.withdrawAmount+'원',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                    fontSize: 20.0,
-                                    color: _color,
-                                  ),
-                                )),
-                          ],
-                        )]))
+                                          ),
+                                          width: 150,
+                                          margin: EdgeInsets.only(right: 10.0, bottom: 10.0),
+                                          child: Text(
+                                            history.withdrawAmount+'원',
+                                            textAlign: TextAlign.left,
+                                            style: TextStyle(
+                                              fontSize: 20.0,
+                                              color: _color,
+                                            ),
+                                          )),
+                                    ],
+                                  )]))
 //                          ListTile(
 //
 //                            title: Text(equity.company),
 //                          )
 
-          );
+                    );
 
+                  },
+                );
+              } else if (snapshot.hasError) {
+                return Text("${snapshot.error}");
+              }
+
+              return CircularProgressIndicator();
             },
-        );
-      } else if (snapshot.hasError) {
-        return Text("${snapshot.error}");
-      }
-
-      return CircularProgressIndicator();
-    },
+          ),
         ),
-        ),
-        ),
+      ),
     );
   }
 }
